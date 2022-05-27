@@ -1,2 +1,4 @@
-# web-330
-Enterprise JavaScript 2: Bellevue University
+# WEB 330 Enterprise JavaScript ||
+## Contributors
+* Richard Krasso
+* Andres Macias

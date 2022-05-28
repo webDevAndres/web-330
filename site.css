@@ -1,5 +1,11 @@
+/**
+    Title: site.css
+    Author: Andres Macias
+    Date: 5/27/2021
+    Description: CSS site file for WEB 330 - Enterprise JavaScript II
+*/
 #container {
-    margin-top: 50px;
+    padding-top: 50px;
     margin-left: 100px;
     margin-right: 100px;
 }
@@ -14,5 +20,54 @@
 
 .pull-right {
     float: right;
+    margin-right: 100px; /*Added to align with the main body */
 }
 
+.assign-container {
+  padding: 10px;
+}
+
+.assign-content {
+  width: 600px;
+  margin: 3% auto 0;
+}
+
+.assign-results-text {
+  text-align: center;
+  font-size: 28px;
+}
+
+.app-header {
+  text-align: center;
+  font-weight: 400;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+}
+
+.return-home {
+    color: #4f3674;
+    text-decoration: none;
+  }
+  
+  .return-home:visited {
+    color: #3c275a;
+  }
+  
+  .return-home:hover {
+    background-color: #D6A800;
+    color: #4f3674;
+  }
+
+  .form {
+    display: inline-grid;
+    grid-template-columns: auto;
+  }
+  
+  .form-field {
+    padding: 20px;
+  }
+
+  .full-width {
+    width: 100%;
+  }

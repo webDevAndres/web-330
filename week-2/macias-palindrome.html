@@ -1,3 +1,10 @@
+<!-- 
+    Title: macias-palindrome.html
+    Author: Andres Macias
+    Date: 6/04/2022
+    Description: palindrome app file for WEB 330 - Enterprise JavaScript II 
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,17 +52,23 @@
         <div class="assign-content">
             <div class="card">
                 <div class="card-title">Palindrome Results</div>
-                <div class="card-content" id="assign-results-header"></div>
-                <div class="assign-results-text" id="assignResults"></div>
+                <div class="card-content" >
+                    <div id="assign-results-header"></div>
+                    <div class="assign-results-text" id="assignResults"></div>
+                </div>
+                
             </div>
         </div>
     </div>
 
     <script>
+        // set the users selected theme
         setSelectedTheme();
+
+
         function getTodaysDate() {
             let todaysDate = new Date();
-            let dateString = todaysDate.toLocaleDateString();
+            let dateString = todaysDate.toLocaleDateString('en-US');
             return dateString;
         }
         function getLength(phrase) {
@@ -90,9 +103,9 @@
             assignResults.innerHTML = header;
 
             if (isPalindrome(txtPhrase)) {
-                document.getElementById("assignResults").innerHTML = txtPhrase +" <strong>is</strong> a palindrome!";
+                document.getElementById("assignResults").innerHTML = txtPhrase +" <strong><u>is</u></strong> a palindrome!";
             } else {
-                document.getElementById("assignResults").innerHTML = txtPhrase +" <strong>is not</strong> a palindrome!";
+                document.getElementById("assignResults").innerHTML = txtPhrase +" <strong><u>is not</u></strong> a palindrome!";
             }
         }
 

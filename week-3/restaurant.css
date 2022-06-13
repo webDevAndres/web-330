@@ -1,0 +1,11 @@
+/*
+Title: macias-palindrome.html
+    Author: Andres Macias
+    Date: 6/12/2022
+    Description: restaurant app file for WEB 330 - Enterprise JavaScript II 
+*/
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+}

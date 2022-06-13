@@ -6,6 +6,8 @@ Title: macias-palindrome.html
 */
 
 .menu-container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+    padding: 10px;
 }

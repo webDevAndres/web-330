@@ -152,7 +152,7 @@ h2, h3, h4 {
 
   .table {
       border-collapse: collapse;
-      width: 100%;
+      width: 20%;
       margin-bottom: 30px;
   }
 
@@ -167,6 +167,7 @@ h2, h3, h4 {
     padding-top: 12px;
     padding-bottom: 12px;
     padding-left: 12px;
+    padding-right: 12px;
   }
 
   .table-hover tr:hover {

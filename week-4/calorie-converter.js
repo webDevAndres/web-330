@@ -1,4 +1,9 @@
-
+/* 
+Title: calorie-converter.js
+Author: Andres Macias
+Date: 6/19/2022
+Description: Class that filters food objects
+*/
 import { FoodModel } from "./food-model.js";
 
 export class CalorieConverter{
@@ -13,6 +18,6 @@ export class CalorieConverter{
 
    static find(name) {
    let foodList = this.data.filter((food)=> food.name.toLowerCase() === name);
-   return foodList;
+      return foodList;
    }
 };

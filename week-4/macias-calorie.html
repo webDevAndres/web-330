@@ -1,8 +1,8 @@
 <!-- 
-    Title: macias-palindrome.html
+    Title: macias-calorie.html
     Author: Andres Macias
-    Date: 6/13/2022
-    Description: calorie app file for WEB 330 - Enterprise JavaScript II 
+    Date: 6/19/2022
+    Description: calorie app for WEB 330 - Enterprise JavaScript II 
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -61,8 +61,10 @@
         import { CalorieConverter } from './calorie-converter.js';
 
         let txtFoodItemEl = document.getElementById("txtFoodItem");
-        document.getElementById("btnSearch").onclick = function () {
+        
+            document.getElementById("btnSearch").onclick = function () {
             let txtFoodItem = txtFoodItemEl.value;
+            if(!txtFoodItem == "") {
             let foods = CalorieConverter.find(txtFoodItem.toLowerCase());
             let tableData = "<table class='table table-hover'>";
             tableData += "<tr>";
@@ -77,9 +79,8 @@
             }
             tableData += "</table>";
             document.getElementById("searchResults").innerHTML = tableData;
+        }
         };
-
-
 
         document.addEventListener("keyup", function () {
             if (event.key === "Enter") {

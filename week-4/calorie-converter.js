@@ -11,8 +11,8 @@ export class CalorieConverter{
    new FoodModel(1012, "Soda", 150)
    ];
 
-   static find(string) {
-   let foodList = this.data.filter((food)=> food.name == string);
+   static find(name) {
+   let foodList = this.data.filter((food)=> food.name.toLowerCase() === name);
    return foodList;
    }
 };

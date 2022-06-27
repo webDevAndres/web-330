@@ -22,5 +22,6 @@ cart-component {
 }
 
 #cartIcon{
-    margin-left: 30%;
+    margin-left: 40%;
+    cursor: pointer;
 }

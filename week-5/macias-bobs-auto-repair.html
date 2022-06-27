@@ -1,0 +1,121 @@
+<!-- 
+    Title: macias-bobs-auto-repair.html
+    Author: Andres Macias
+    Date: 6/25/2022
+    Description: bobs-auto-repair app for WEB 330 - Enterprise JavaScript II 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB 330 - Enterprise JavaScript II</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="macias-bobs-auto-repair.css">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/8b2cac046d.js" crossorigin="anonymous"></script>
+   
+    <!-- CDN Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
+
+    <!-- users selected theme -->
+    <script src="../theme.js"></script>
+
+    <!-- cart component -->
+    <script src="./cart-component.js"></script>
+</head>
+
+<body class="light-theme">
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to Bob's Automotive Repair Shop!</h1>
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">Product Listing</div>
+                <cart-component></cart-component>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="form-field">
+                            <label for="productList">Choose a product:</label>
+                            <select class="drop-down-menu" name="productList" id="productList">
+                                <option value="select">--Select--</option>
+                                <option value="19.99">Oil Change</option>
+                                <option value="18.44">Filter Replacement</option>
+                                <option value="9.99">Wiper Fluid Refill</option>
+                            </select>
+                            <i id="cart-message">To view your shopping cart click on the cart icon</i>
+                        </div>
+                        <div class="form-field">
+                            <button class="btn btn-primary full-width" id="btnAddProduct">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <a href="../index.html">Return</a>
+        </div>
+    </div>
+    <div class="assign-container">
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">Shopping Cart</div>
+                <div class="card-content" id="shoppingCart">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { Product } from './product.js';
+        import { ShoppingCart } from './shopping-cart.js';
+
+        let shoppingCart = new ShoppingCart();
+      
+        
+            document.getElementById("btnAddProduct").onclick = function () {
+                let productList = document.getElementById('productList');
+                let product = productList.options[productList.selectedIndex].text;
+                let productValue = productList.options[productList.selectedIndex].value;
+
+           function setCartCount() {
+            let cartCount = document.getElementById('cart-count');
+            cartCount.innerHTML = shoppingCart.count();
+           }
+           setCartCount();
+            if(product !== "--Select--") {
+                shoppingCart.add(new Product(product, productValue));
+                shoppingCart.count();
+                alert(product + " was added to your shopping cart!");
+
+                productList.options[0].value = "select";
+        }
+        };
+
+        document.getElementById('cartIcon').onclick = function() {
+            let cartDisplayTable = "<table class='table table-hover'>";
+            cartDisplayTable += "<tr>";
+            cartDisplayTable += "<th>ID</th>";
+            cartDisplayTable += "<th>Name</th>";
+            cartDisplayTable += "<th>Price</th>";
+            cartDisplayTable += "</tr>";
+            for (const product of shoppingCart.products) {
+                cartDisplayTable += "<tr>";
+                cartDisplayTable += "<td>" + product.id + "</td>";
+                cartDisplayTable += "<td>" + product.name + "</td>";
+                cartDisplayTable += "<td>" + product.price + "</td>";
+                cartDisplayTable += "</tr>";
+            }
+            cartDisplayTable += "</table>";
+            document.getElementById("shoppingCart").innerHTML = cartDisplayTable;
+        }
+
+           // set the users selected theme
+           setSelectedTheme();
+    </script>
+</body>
+
+</html>

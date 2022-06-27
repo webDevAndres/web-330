@@ -1,0 +1,26 @@
+/*
+    Title: macias-calorie.css
+    Author: Andres Macias
+    Date: 6/25/2022
+    Description: CSS for the macias-bobs-auto-repair.html file
+*/
+
+#cart-message {
+    float: left;
+    color: #df546a;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+#cart-message:hover {
+    cursor: pointer;
+}
+
+cart-component {
+    font-size: 2em;
+    color: var(--card-title-color);
+}
+
+#cartIcon{
+    margin-left: 30%;
+}

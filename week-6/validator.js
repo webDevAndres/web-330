@@ -6,10 +6,10 @@ Description: uses the validation classes to validate the name and fields
 */
 
 
-import { RequiredField } from "./required-field";
-import { FloatField } from "./float-field";
-import { FloatMinField } from "./float-min-field";
-import { FloatMaxField } from "./float-max-field";
+import { RequiredField } from "./required-field.js";
+import { FloatField } from "./float-field.js";
+import { FloatMinField } from "./float-min-field.js";
+import { FloatMaxField } from "./float-max-field.js";
 
 export class Validator {
     validator = [];
@@ -21,19 +21,19 @@ export class Validator {
     }
 
     addRequiredField() {
-        validator.push(new RequiredField(this.name, this.field));
+        this.validator.push(new RequiredField(this.name, this.field));
     }
 
     addRequiredFloatField() {
-        validator.push(new FloatField(this.name, this.field));
+        this.validator.push(new FloatField(this.name, this.field));
     }
 
     addFloatMinField(min) {
-        validator.push(new FloatMinField(this.name, this.field, min));
+        this.validator.push(new FloatMinField(this.name, this.field, min));
     }
 
     addFloatMaxField(max) {
-        validator.push(new FloatMaxField(this.name, this.field, max));
+        this.validator.push(new FloatMaxField(this.name, this.field, max));
     }
 
     validate() {

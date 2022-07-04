@@ -1,0 +1,111 @@
+<!-- 
+    Title: macias-future-value.html
+    Author: Andres Macias
+    Date: 6/25/2022
+    Description: future-value app for WEB 330 - Enterprise JavaScript II 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB 330 - Enterprise JavaScript II</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="flex-layout.css">
+    <link rel="stylesheet" href="macias-future-value.css">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/8b2cac046d.js" crossorigin="anonymous"></script>
+
+    <!-- CDN Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
+
+    <!-- users selected theme -->
+    <script src="../theme.js"></script>
+
+</head>
+
+<body class="light-theme">
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the Future Value App!</h1>
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">Future Value Calculator</div>
+                <div class="row">
+                    <div class="col-12 danger" id="errorLog"></div>
+                </div>
+                <div class="card-content">
+                    <div class="form">
+                        <div class="row">
+                            <div class="form-field form-label col-5">
+                                <label for="txtMonthlyPayment">Monthly Payment:</label>
+                            </div>
+                            <div class="form-field col-7">
+                                <input type="text" name="txtMonthlyPayment" id="txtMonthlyPayment">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-field form-label col-5">
+                                <label for="txtYearlyRate">Interest Rate:</label>
+                            </div>
+                            <div class="form-field col-7">
+                                <input type="text" name="txtYearlyRate" id="txtYearlyRate">
+                                <i class="danger">Enter 11% as 11.1:</i>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="form-field form-label col-5">
+                                <label for="listNumOfYears">Number of Years:</label>
+                            </div>
+                            <div class="form-field col-7">
+                                <select class="drop-down-menu" name="listNumOfYears" id="listNumOfYears">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-field">
+                                <button class="btn btn-primary full-width" id="btnCalculate">Calculate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <a href="../index.html">Return</a>
+        </div>
+    </div>
+    <div class="assign-container">
+        <div class="assign-content">
+            <div class="card">
+                <div class="card-title">Calculation as of</div>
+                <span id="today"></span>
+                <div class="card-content" id="futureValue">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+
+
+        // set the users selected theme
+        setSelectedTheme();
+    </script>
+</body>
+
+</html>

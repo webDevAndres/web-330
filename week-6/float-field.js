@@ -20,6 +20,6 @@ export class FloatField {
     }
 
     getMessage() {
-        return `${this.name} must be a float value. You entered ${this.field}`;
+        return `${this.name} must be a float value. You entered ${this.field}.`;
     }
 }

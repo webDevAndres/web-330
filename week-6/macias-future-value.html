@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-field col-7">
                                 <input type="text" name="txtYearlyRate" id="txtYearlyRate">
-                                <i class="danger">Enter 11% as 11.1:</i>
+                                <i class="danger">Enter 11.1% as 11.1</i>
                             </div>
 
                         </div>
@@ -92,16 +92,72 @@
     <div class="assign-container">
         <div class="assign-content">
             <div class="card">
-                <div class="card-title">Calculation as of</div>
-                <span id="today"></span>
-                <div class="card-content" id="futureValue">
+                <div class="card-title">Calculation as of <span id="today"></span></div>
+                <div class="card-content assign-results-text" id="futureValue">
                 </div>
             </div>
         </div>
     </div>
 
     <script type="module">
+        import { FinanceCalculator } from "./finance-calculator.js";
+        import { Validator } from "./validator.js";
 
+        document.getElementById('today').innerHTML = new Date().toLocaleDateString('en-US');
+
+        document.getElementById('btnCalculate').onclick = function () {
+
+            let monthlyPayment = document.getElementById('txtMonthlyPayment').value;
+            let rate = document.getElementById('txtYearlyRate').value;
+            let years = document.getElementById('listNumOfYears').value;
+            let errorLogEl = document.getElementById('errorLog');
+
+            let monthlyPaymentValidator = new Validator('Monthly Payment', monthlyPayment);
+
+            monthlyPaymentValidator.addRequiredField();
+            monthlyPaymentValidator.addRequiredFloatField();
+            monthlyPaymentValidator.addFloatMinField(100);
+
+
+            let rateValidator = new Validator('Interest Rate', rate);
+
+            rateValidator.addRequiredField();
+            rateValidator.addRequiredFloatField();
+            rateValidator.addFloatMaxField(100);
+
+
+            let errorLog = [];
+
+
+            if (!monthlyPaymentValidator.validate()) {
+                for (let msg of monthlyPaymentValidator.messages) {
+                    errorLog.push(msg);
+                }
+            }
+
+            if (!rateValidator.validate()) {
+                for (let msg of rateValidator.messages) {
+                    errorLog.push(msg);
+                }
+            }
+
+            if (monthlyPaymentValidator.validate() && rateValidator.validate()) {
+
+                errorLogEl.innerHTML = "";
+
+                let futureValue = FinanceCalculator.calculateFutureValue(monthlyPayment, rate, years);
+                document.getElementById('futureValue').innerHTML = 'The future value is ' + FinanceCalculator.convertToCurrency(futureValue);
+            }
+
+            else {
+                errorLogEl.innerHTML = "";
+                let errorLogMessage = `<ul>`;
+                for (let msg of errorLog) {
+                    errorLogMessage += `<li>${msg}</li>`;
+                }
+                document.getElementById('errorLog').innerHTML = errorLogMessage + '</ul>';
+            }
+        };
 
         // set the users selected theme
         setSelectedTheme();

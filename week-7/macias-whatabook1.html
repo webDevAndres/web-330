@@ -16,6 +16,7 @@
     <!-- stylesheets -->
     <link rel="stylesheet" href="../theme.css">
     <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="macias-whatabook1.css">
 
     <!-- CDN Stylesheets -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
@@ -24,35 +25,97 @@
     <script src="../theme.js"></script>
 </head>
 
-    <body class="light-theme">
-        <div class="assign-container">
-            <h1 class="app-header">Welcome to the WhatABook, Part 1 App!</h1>
-            <div class="assign-content">
-                <div class="card ">
-                    <div class="card-title">Book Listing</div>
-                    <div class="card-content" id="bookList"></div>                   
-                </div>
-                <br>
-                <a class="return-home" href="../index.html">Return</a>
+<body class="light-theme">
+    <div class="assign-container">
+        <h1 class="app-header">Welcome to the WhatABook, Part 1 App!</h1>
+        <div class="assign-content">
+            <div class="card ">
+                <div class="card-title">Book Listing</div>
+                <div class="card-content" id="bookList"></div>
             </div>
-            <div class="assign-container">
-                <div class="assign-content">
-                    <div class="card">
-                        <div class="card-title">Selected Textbook</div>
-                        <div class="card-content assign-results-text" id="Selected Book">
-                        </div>
+            <br>
+            <a class="return-home" href="../index.html">Return</a>
+        </div>
+        <div class="assign-container">
+            <div class="assign-content">
+                <div class="card">
+                    <div class="card-title">Selected Textbook</div>
+                    <div class="card-content" id="selectedBook">
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
 
-        <script type="module">
+    <script>
+        function loadBooks(xml) {
+            let books = xml.getElementsByTagName('book');
+            let tableData = `<table class='table table-hover' id='bookTable'>`;
+            tableData += `<tr>`;
+            tableData += `<th>ISBN</th>`;
+            tableData += `<th>Title</th>`;
+            tableData += `<th>Description</th>`;
+            tableData += `<th>Pages</th>`;
+            tableData += `<th>Authors</th>`;
+            tableData += `</tr>`;
+            for (const book of books) {
+                let isbn = book.getElementsByTagName('isbn')[0].childNodes[0].nodeValue;
+                let title = book.getElementsByTagName('title')[0].childNodes[0].nodeValue;
+                let description = book.getElementsByTagName('description')[0].childNodes[0].nodeValue;
+                let pages = book.getElementsByTagName('pages')[0].childNodes[0].nodeValue;
+                let authors = book.getElementsByTagName('authors')[0].childNodes[0].nodeValue;
+                tableData += `<tr><td data-value='ISBN'><a href='#' class='isbn-link'>${isbn}</a></td><td data-value='Title'>${title}</td>
+                    <td data-value='Description'>${description}</td><td data-value='Pages'>${pages}</td><td data-value='Authors'>${authors}</td></tr>`;
+            }
+            tableData += `</table>`;
+            document.getElementById('bookList').innerHTML = tableData;
+        };
+
+        function anchorClicked(e) {
+            e.preventDefault();
+
+            let self = this;
+            let cell = self.parentElement;
+            let row = cell.parentElement;
+
+            let data = row.querySelectorAll('td');
+            
+
+            let bookData = `<ul style='list-style-type:none'>`;
+            let index = 0;
+            for (const field of data) {
+                bookData += `<li><b>${field.dataset.value}:</b> ${data[index].innerHTML}</li>`;
+                index++;
+            }
+            bookData += `</ul>`;
+           
+            document.getElementById('selectedBook').innerHTML = bookData;
+        };
+
+        function addIsbnClickEvents() {
+            let viewButtons = document.querySelectorAll('#bookTable tbody .isbn-link');
+            for (let index = 0; index < viewButtons.length; index++) {
+                viewButtons[index].addEventListener('click', anchorClicked);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let fileName = 'books.xml';
+            fetch(fileName)
+                .then(res => res.text())
+                .then(data => {
+                    let domParser = new DOMParser();
+                    let xmlBooks = domParser.parseFromString(data, 'text/xml');
+                    loadBooks(xmlBooks);
+                    addIsbnClickEvents();
+                });
+        });
 
 
-            setSelectedTheme();
-        </script>
-    </body>
+        setSelectedTheme();
+    </script>
+</body>
 
 </html>

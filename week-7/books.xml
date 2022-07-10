@@ -1,3 +1,10 @@
+<!-- 
+    Title: books.xml
+    Author: Andres Macias
+    Date: 07/10/2022
+    Description: xml file containing books for WEB 330 - Enterprise JavaScript II 
+-->
+
 <books>
     <book>
         <isbn>9780345339683</isbn>

@@ -1,0 +1,58 @@
+<!-- 
+    Title: macias-palindrome.html
+    Author: Andres Macias
+    Date: 07/10/2022
+    Description: whatabook1 file for WEB 330 - Enterprise JavaScript II 
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB 330 - Enterprise JavaScript II</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../site.css">
+
+    <!-- CDN Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap">
+
+    <!-- users selected theme -->
+    <script src="../theme.js"></script>
+</head>
+
+    <body class="light-theme">
+        <div class="assign-container">
+            <h1 class="app-header">Welcome to the WhatABook, Part 1 App!</h1>
+            <div class="assign-content">
+                <div class="card ">
+                    <div class="card-title">Book Listing</div>
+                    <div class="card-content" id="bookList"></div>                   
+                </div>
+                <br>
+                <a class="return-home" href="../index.html">Return</a>
+            </div>
+            <div class="assign-container">
+                <div class="assign-content">
+                    <div class="card">
+                        <div class="card-title">Selected Textbook</div>
+                        <div class="card-content assign-results-text" id="Selected Book">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <script type="module">
+
+
+            setSelectedTheme();
+        </script>
+    </body>
+
+</html>
